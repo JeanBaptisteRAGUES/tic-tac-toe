@@ -5,6 +5,7 @@ import Profile from '../Profile';
 import Login from '../Login';
 import SignUp from '../SignUp';
 import ErrorPage from '../ErrorPage';
+import PlayersList from '../PlayersList';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route path="/profile" component={Profile} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
+            <Route path="/playerslist" component={PlayersList} />
             <Route component={ErrorPage} />
         </Switch>
     </Router>
