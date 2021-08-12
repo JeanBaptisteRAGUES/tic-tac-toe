@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import {FirebaseContext} from '../Firebase';
@@ -26,6 +27,13 @@ const Login = (props) => {
             setEmail('');
             setPassword('');
             props.history.push('/profile');
+
+            let formatedDate = moment(Date.now()).format('DD MMM hh:mm a');
+            firebase.db.collection('users').doc(user.user.uid).update(
+                {
+                    lastCoDate: formatedDate
+                }
+            );
         })
         .catch(error => {
             setError(error);

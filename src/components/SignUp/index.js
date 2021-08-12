@@ -27,18 +27,22 @@ const Signup = (props) => {
         const {email, password, username} = loginData;
         firebase.signupUser(email, password)
         .then((authUser) => {
+            const formatedDate = moment(Date.now()).format('DD MMM hh:mm a');
             return firebase.user(authUser.user.uid).set({
                 id: authUser.user.uid,
                 username: username,
                 email: email,
                 playedMatches: 0,
                 wonMatches: 0,
-                lastCoDate: Date.now()
+                lastCoDate: formatedDate
             });
         })
         .then(() => {
             setLoginData({...data});
             props.history.push('/profile');
+            firebase.auth.currentUser.updateProfile({
+                displayName: username
+            })
         })
         .catch(error => {
             setError(error);
