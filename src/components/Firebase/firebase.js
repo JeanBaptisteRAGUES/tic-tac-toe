@@ -39,6 +39,8 @@ class Firebase{
     // Créer un nouveau document dans users avec pour id l'uid généré automatiquement lors de l'authentification via Firebase
     user = (uid) => this.db.doc(`users/${uid}`);
 
+    challenge = (uid) => this.db.doc(`challenges/${uid}`);
+
     usersCollection = () => this.db.collection('users');
 }
 

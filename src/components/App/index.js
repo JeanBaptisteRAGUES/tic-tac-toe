@@ -6,7 +6,7 @@ import Login from '../Login';
 import SignUp from '../SignUp';
 import ErrorPage from '../ErrorPage';
 import PlayersList from '../PlayersList';
-import PlayersList2 from '../PlayerList2';
+import PlayersList2 from '../PlayersList2';
 
 function App() {
   return (
