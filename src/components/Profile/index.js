@@ -1,4 +1,5 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FirebaseContext } from '../Firebase';
 
 const Profile = (props) => {
@@ -56,7 +57,8 @@ const Profile = (props) => {
                 -Parties jouées : {userData.playedMatches}<br/>
                 -Parties gagnées : {userData.wonMatches}<br/>
                 <br/><br/>
-                <button>Trouver d'autres joueurs</button><br/>
+                <Link to='/playerslist2'>Trouver d'autres joueurs</Link><br/>
+                <Link to='/challengeslist'>Afficher les demandes de défis</Link><br/>
                 <button>Continuer une partie</button><br/>
                 <button onClick={() => disconnect()}>Déconnexion</button>
             </div>

@@ -44,7 +44,7 @@ const PlayersList2 = () => {
         const challengerUsername = getUserName();
         const formatedDate = moment(Date.now()).format('DD MMM hh:mm a');
         
-        firebase.challenge(challengerId+challengedId).set({
+        firebase.db.collection('challenges').add({
             challengerId: challengerId,
             challengedId: challengedId,
             challengerUsername: challengerUsername,

@@ -7,6 +7,7 @@ import SignUp from '../SignUp';
 import ErrorPage from '../ErrorPage';
 import PlayersList from '../PlayersList';
 import PlayersList2 from '../PlayersList2';
+import ChallengesList from '../ChallengesList';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/signup" component={SignUp} />
             <Route path="/playerslist" component={PlayersList} />
             <Route path="/playerslist2" component={PlayersList2} />
+            <Route path="/challengeslist" component={ChallengesList} />
             <Route component={ErrorPage} />
         </Switch>
     </Router>
