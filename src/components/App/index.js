@@ -8,6 +8,8 @@ import ErrorPage from '../ErrorPage';
 import PlayersList from '../PlayersList';
 import PlayersList2 from '../PlayersList2';
 import ChallengesList from '../ChallengesList';
+import MatchesList from '../MatchesList';
+import Match from '../Match';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
             <Route path="/playerslist" component={PlayersList} />
             <Route path="/playerslist2" component={PlayersList2} />
             <Route path="/challengeslist" component={ChallengesList} />
+            <Route path="/matcheslist" component={MatchesList} />
+            <Route path="/match/:matchid" component={Match} />
             <Route component={ErrorPage} />
         </Switch>
     </Router>

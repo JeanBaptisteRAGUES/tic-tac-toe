@@ -59,7 +59,7 @@ const Profile = (props) => {
                 <br/><br/>
                 <Link to='/playerslist2'>Trouver d'autres joueurs</Link><br/>
                 <Link to='/challengeslist'>Afficher les demandes de défis</Link><br/>
-                <button>Continuer une partie</button><br/>
+                <Link to='/matcheslist'>Commencer ou continuer une partie</Link><br/>
                 <button onClick={() => disconnect()}>Déconnexion</button>
             </div>
         </div>
