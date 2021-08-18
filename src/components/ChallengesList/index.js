@@ -62,6 +62,8 @@ const ChallengesList = () => {
             .catch((err) => {
                 console.log("Erreur lors de la MAJ du challenge : " + err);
             });
+
+            
         }else{
             console.log("Challenge refusé !");
             firebase.db.collection('challenges').doc(challengeId).update({

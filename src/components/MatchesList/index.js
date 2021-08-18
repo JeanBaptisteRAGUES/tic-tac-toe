@@ -16,6 +16,7 @@ const MatchesList = () => {
                 let uId = user.uid;
                 const unsubscribe = uId != null && firebase.db.collection('matches')
                 .where('playersIDs', 'array-contains', uId)
+                .where('winner', '==', '')
                 .onSnapshot(matches => {
                     const matchesData = matches.docs.map(matchData => matchData)
                     setMatches(matchesData)
@@ -26,57 +27,6 @@ const MatchesList = () => {
             }
         });
     }, [])
-
-    /*
-    const acceptOrDecline = (challengeId, challengerId, challengerUsername, answer) => {
-        const challengedId = getUserId();
-        const challengedUsername = getUserName();
-        const formatedDate = moment(Date.now()).format('DD MMM hh:mm a');
-        
-        if(answer === 'accepted'){
-            console.log("Challenge accepté : création d'une nouvelle partie.");
-            firebase.db.collection('matches').add({
-                playersIDs: [challengerId, challengedId],
-                playerX_id: challengerId,
-                playerO_id: challengedId,
-                playerX_username: challengerUsername,
-                playerO_username: challengedUsername,
-                date: formatedDate,
-                currentPlayer: 'X',
-                grid: JSON.stringify([['','',''], ['','',''], ['','','']]),
-                turn: 0,
-                winner: ''
-            })
-            .then(() => {
-                console.log("Création du match réussie !");
-            })
-            .catch((err) => {
-                console.log("Erreur lors de la création du match : " + err);
-            });
-
-            firebase.db.collection('challenges').doc(challengeId).update({
-                status: 'accepted' 
-            })
-            .then(() => {
-                console.log("MAJ challenge réussie.");
-            })
-            .catch((err) => {
-                console.log("Erreur lors de la MAJ du challenge : " + err);
-            });
-        }else{
-            console.log("Challenge refusé !");
-            firebase.db.collection('challenges').doc(challengeId).update({
-                status: 'declined' 
-            })
-            .then(() => {
-                console.log("MAJ challenge réussie.");
-            })
-            .catch((err) => {
-                console.log("Erreur lors de la MAJ du challenge : " + err);
-            });
-        }
-    }
-    */
 
     const getUserId = () => {
         return firebase.auth.currentUser.uid;
