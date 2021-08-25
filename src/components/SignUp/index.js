@@ -43,6 +43,26 @@ const Signup = (props) => {
             firebase.auth.currentUser.updateProfile({
                 displayName: username
             })
+            const formatedDate = moment(Date.now()).format('DD MMM hh:mm a');
+            firebase.db.collection('matches').add({
+                playersIDs: [firebase.auth.currentUser.uid, '0'],
+                playerX_id: firebase.auth.currentUser.uid,
+                playerO_id: '0',
+                playerX_username: username,
+                playerO_username: 'Computer',
+                date: formatedDate,
+                currentPlayer: firebase.auth.currentUser.uid,
+                grid: JSON.stringify([['','',''], ['','',''], ['','','']]),
+                turn: 0,
+                winner: '',
+                type: 'pvc'
+            })
+            .then(() => {
+                console.log("Création du match réussie !");
+            })
+            .catch((err) => {
+                console.log("Erreur lors de la création du match : " + err);
+            });
         })
         .catch(error => {
             setError(error);

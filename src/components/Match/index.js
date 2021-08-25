@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { FirebaseContext } from '../Firebase';
@@ -10,18 +11,21 @@ const Match = () => {
     const [match, setMatch] = useState(null);
     const [grid, setGrid] = useState([]);
     const [team, setTeam] = useState('');
+    const [vsComputer, setVsComputer] = useState(false);
+    const [computerCanPlay, setComputerCanPlay] = useState(true);
 
     useEffect(() => {
-
         firebase.auth.onAuthStateChanged((user) => {
             if(user){
                 let uId = user.uid;
+                console.log('Match id : ' + matchid);
                 const unsubscribe = uId != null && firebase.db.collection('matches').doc(matchid)
                 .onSnapshot(match => {
                     const matchData = match.data();
                     setMatch(matchData);
                     setGrid(JSON.parse(matchData.grid));
                     setTeam(getTeam(matchData, uId));
+                    setVsComputer(matchData.type == 'pvc');
                 });
         
                 return () => unsubscribe();
@@ -29,8 +33,14 @@ const Match = () => {
         });
     }, []);
 
+
+
     const getUserId = () => {
         return firebase.auth.currentUser.uid;
+    }
+
+    const getUserName = () => {
+        return firebase.auth.currentUser.displayName;
     }
 
     const getTeam = (mData, playerId) => {
@@ -42,6 +52,7 @@ const Match = () => {
     }
 
     const changePlayer = () => {
+        console.log(match.currentPlayer);
         if(match.currentPlayer === match.playerX_id){
             return match.playerO_id;
         }
@@ -88,6 +99,26 @@ const Match = () => {
     }
 
     const endMatch = () => {
+        console.log("Match terminé !");
+        if(vsComputer){
+            const formatedDate = moment(Date.now()).format('DD MMM hh:mm a');
+            const winner = match.currentPlayer != '0' ? '0' : getUserId();
+            console.log(match.currentPlayer);
+            firebase.db.collection('matches').doc(matchid)
+            .update(
+                {
+                    date: formatedDate,
+                    currentPlayer: firebase.auth.currentUser.uid,
+                    grid: JSON.stringify([['','',''], ['','',''], ['','','']]),
+                    turn: 0,
+                    winner: winner
+                }
+            )
+            .catch(err => {console.log('Erreur maj match : ' + err)});
+
+            return null;
+        }
+
         firebase.db.collection('matches').doc(matchid)
         .update(
             {
@@ -111,9 +142,31 @@ const Match = () => {
         return match.winner != '';
     }
 
-    const updateGrid = (rI, cI) => {
+    const findCase = (myGrid) => {
+        let myArray = []
+        myGrid.forEach((row, rI) => {
+            row.forEach((myCase, cI) => {
+                if(myCase == ''){
+                    myArray =  [rI, cI];
+                }
+            })
+        })
+
+        return myArray;
+    }
+
+    const computerPlay = (myGrid) => {
+        console.log('Computer plays !');
+        setComputerCanPlay(false);
+        const newGrid = myGrid.slice(0);
+        const [rI, cI] = findCase(newGrid);
+
+        setTimeout(function() {updateGrid(rI, cI, 'O')}, 1000);
+    }
+
+    const updateGrid = (rI, cI, myTeam) => {
         const newGrid = grid.slice(0);
-        newGrid[rI][cI] = team;
+        newGrid[rI][cI] = myTeam;
 
         firebase.db.collection('matches').doc(matchid)
         .update(
@@ -122,7 +175,14 @@ const Match = () => {
                 turn: match.turn+1,
                 currentPlayer: changePlayer()
             }
-        );
+        )
+        .then(
+            testVictory(newGrid) ?
+                endMatch(matchid)
+            :
+                setComputerCanPlay(true)
+        )
+        
 
         return newGrid;
     }
@@ -144,12 +204,12 @@ const Match = () => {
             return null;
         }
 
-        const newGrid = updateGrid(rI, cI);
-        
-        if(testVictory(newGrid)){
-            endMatch(matchid);
-        }
+        const newGrid = updateGrid(rI, cI, team);
     }
+
+    const testComputer = vsComputer && match != null && match.currentPlayer == '0' && computerCanPlay && (
+        computerPlay(grid)
+    )
 
     const displayMatch = match != null && (
         <div className='matchDisplay'>
@@ -179,6 +239,15 @@ const Match = () => {
         </div>
     )
 
+    const restart = () => {
+        firebase.db.collection('matches').doc(matchid)
+        .update(
+            {
+                winner: ''
+            }
+        )
+    }
+
     const matchOverMsg = match != null && match.winner != '' && (
         <div className="matchOverMsg">
             <h2>Match terminé !</h2>
@@ -187,6 +256,12 @@ const Match = () => {
                 <h3>Vainqueur : {match.playerX_username}</h3>
                 :
                 <h3>Vainqueur : {match.playerO_username}</h3>
+            }
+            {
+                vsComputer ?
+                <button onClick={() => restart()}>Recommencer</button>
+                :
+                null
             }
         </div>
     )

@@ -1,0 +1,26 @@
+.homeContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 100vh;
+}
+
+.choiceContainer{
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    width: 250px;
+    background-color: cornflowerblue;
+    margin: 20px;
+    border: solid black 1px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.icone{
+    height: 75px;
+    width: 75px;
+}

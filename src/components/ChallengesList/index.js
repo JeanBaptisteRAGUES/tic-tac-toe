@@ -44,7 +44,8 @@ const ChallengesList = () => {
                 currentPlayer: challengerId,
                 grid: JSON.stringify([['','',''], ['','',''], ['','','']]),
                 turn: 0,
-                winner: ''
+                winner: '',
+                type: 'pvp'
             })
             .then(() => {
                 console.log("Création du match réussie !");

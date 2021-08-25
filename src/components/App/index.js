@@ -10,6 +10,7 @@ import PlayersList2 from '../PlayersList2';
 import ChallengesList from '../ChallengesList';
 import MatchesList from '../MatchesList';
 import Match from '../Match';
+import HomePage from '../HomePage';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/challengeslist" component={ChallengesList} />
             <Route path="/matcheslist" component={MatchesList} />
             <Route path="/match/:matchid" component={Match} />
+            <Route path="/homepage" component={HomePage} />
             <Route component={ErrorPage} />
         </Switch>
     </Router>
