@@ -52,7 +52,7 @@ const Match = () => {
     }
 
     const changePlayer = () => {
-        console.log(match.currentPlayer);
+        //console.log(match.currentPlayer);
         if(match.currentPlayer === match.playerX_id){
             return match.playerO_id;
         }
@@ -102,8 +102,8 @@ const Match = () => {
         console.log("Match terminé !");
         if(vsComputer){
             const formatedDate = moment(Date.now()).format('DD MMM hh:mm a');
-            const winner = match.currentPlayer != '0' ? '0' : getUserId();
-            console.log(match.currentPlayer);
+            const winner = match.currentPlayer == '0' ? '0' : getUserId();
+            //console.log(match.currentPlayer);
             firebase.db.collection('matches').doc(matchid)
             .update(
                 {
@@ -160,7 +160,7 @@ const Match = () => {
         setComputerCanPlay(false);
         const newGrid = myGrid.slice(0);
         const [rI, cI] = findCase(newGrid);
-
+        match.currentPlayer = '0';
         setTimeout(function() {updateGrid(rI, cI, 'O')}, 1000);
     }
 
@@ -180,7 +180,7 @@ const Match = () => {
             testVictory(newGrid) ?
                 endMatch(matchid)
             :
-                setComputerCanPlay(true)
+                match.currentPlayer != '0' ? computerPlay(grid) : null
         )
         
 
@@ -207,9 +207,11 @@ const Match = () => {
         const newGrid = updateGrid(rI, cI, team);
     }
 
+    /*
     const testComputer = vsComputer && match != null && match.currentPlayer == '0' && computerCanPlay && (
         computerPlay(grid)
     )
+    */
 
     const displayMatch = match != null && (
         <div className='matchDisplay'>

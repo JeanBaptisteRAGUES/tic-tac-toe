@@ -20,7 +20,7 @@ const MatchesList = () => {
                 .onSnapshot(matches => {
                     const matchesData = matches.docs.map(matchData => matchData)
                     setMatches(matchesData)
-                    console.log(uId)
+                    console.log("test")
                 });
         
                 return () => unsubscribe();
