@@ -1,0 +1,128 @@
+.header{
+    background-color: cornflowerblue;
+    height: 150px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.buttons{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    grid-column-start: 3;
+    grid-row-start: 3;
+    background-color: red;
+}
+
+.button{
+    border-radius: 5px;
+    height: 25px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: white;
+    border: solid 1px black;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+}
+
+h1{
+    font-size: 64px;
+    color: white;
+    background-color: green;
+}
+
+.title{
+    background-color: green;
+    height: 150px;
+    font-size: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column-start: 2;
+    grid-row-start: 1;
+    grid-row-end: span 2;
+    min-width: 400px;
+}
+
+.profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-column-start: 3;
+    grid-row-start: 1;
+    grid-row-end: span 2;
+}
+
+.profilePicture2{
+    border: 1px black dashed;
+    background-color: red;
+    height: 500px;
+    width: 75px;
+}
+
+@media all and (max-width: 1024px){
+    .header{
+        background-color: cornflowerblue;
+        height: 75px;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    .title{
+        background-color: green;
+        height: 75px;
+        font-size: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-column-start: 2;
+        grid-row-start: 1;
+        grid-row-end: span 2;
+        min-width: 200px;
+    }
+
+    .buttons{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: 25px;
+        grid-column-start: 3;
+        grid-row-start: 1;
+        grid-row-end: span 2;
+        background-color: red;
+    }
+
+    .button{
+        border-radius: 5px;
+        height: 15px;
+        margin-left: 15px;
+        margin-right: 10px;
+        margin-top: 10px;
+        background-color: white;
+        border: solid 1px black;
+        font-size: 10px;
+        text-decoration: none;
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1px;
+    }
+}

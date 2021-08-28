@@ -11,23 +11,25 @@ import ChallengesList from '../ChallengesList';
 import MatchesList from '../MatchesList';
 import Match from '../Match';
 import HomePage from '../HomePage';
+import Header from '../Header';
 
 function App() {
   return (
     <Router>
-        <Switch>
-            <Route exact path="/" component={Landing} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={SignUp} />
-            <Route path="/playerslist" component={PlayersList} />
-            <Route path="/playerslist2" component={PlayersList2} />
-            <Route path="/challengeslist" component={ChallengesList} />
-            <Route path="/matcheslist" component={MatchesList} />
-            <Route path="/match/:matchid" component={Match} />
-            <Route path="/homepage" component={HomePage} />
-            <Route component={ErrorPage} />
-        </Switch>
+      <Header/>
+      <Switch>
+          <Route exact path="/" component={Landing} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={SignUp} />
+          <Route path="/playerslist" component={PlayersList} />
+          <Route path="/playerslist2" component={PlayersList2} />
+          <Route path="/challengeslist" component={ChallengesList} />
+          <Route path="/matcheslist" component={MatchesList} />
+          <Route path="/match/:matchid" component={Match} />
+          <Route path="/homepage" component={HomePage} />
+          <Route component={ErrorPage} />
+      </Switch>
     </Router>
   );
 }
