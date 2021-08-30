@@ -1,13 +1,37 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { FirebaseContext } from '../Firebase';
 import {FaUserAlt} from 'react-icons/fa';
+import {FiMenu} from 'react-icons/fi';
 import './header.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 
-const Header = () => {
+const Header = (props) => {
     const [connected, setConnected] = useState(false);
     const [user, setUser] = useState(null);
+    const [hide, setHide] = useState(true);
     const firebase = useContext(FirebaseContext);
+    const [path, setPath] = useState(window.location.pathname);
+    const history = useHistory();
+
+    let landingLink = path != '/' && (
+        <Link className="button" to="/">Accueil</Link>
+    )
+
+    let signupLink = path != '/signup' && (
+        <Link className="button" to="/signup">Inscription</Link>
+    )
+
+    let loginLink = path != '/login' && (
+        <Link className="button" to="/login">Connexion</Link>
+    )
+    
+    useEffect(() => {
+        history.listen((location) => {
+            setPath(location.pathname);
+
+            console.log(`You changed the page to : ${location.pathname}`);
+        })
+    }, [history])
 
     useEffect(() => {
         if(!connected){
@@ -28,33 +52,52 @@ const Header = () => {
         });
     }, []);
 
+    const handleClick = (e) => {
+        const burgerMenu = e.currentTarget;
+        console.log(window.location.pathname);
+        setHide(!hide);
+    }
+
     const buttons = !connected && (
         <div className="buttons">
-            <Link className="button" to="/signup">Inscription</Link>
-            <Link className="button" to="/login">Connexion</Link>
+            {landingLink}
+            {signupLink}
+            {loginLink}
+        </div>
+    )
+
+    const hideFrame = hide && "hide";
+
+    const burgerMenu = !connected && (
+        <div className="burgerMenu" onClick={handleClick}>
+            <FiMenu className="burgerIcon"/>
+            <div className={"linksFrame " + hideFrame}>
+                <Link to="/signup" className="noDecoration">Inscription</Link>
+                <Link to="/login" className="noDecoration">Connexion</Link>
+            </div>
+        </div>
+    )
+
+    const userBurgerMenu = connected && (
+        <div className="burgerMenu" onClick={handleClick}>
+            <FiMenu className="burgerIcon"/>
+            <div className={"linksFrame " + hideFrame}>
+                <Link to="/profile" className="link">Voir profil</Link>
+                <div onClick={() => setConnected(false)} className="link">Déconnexion</div>
+            </div>
         </div>
     )
 
     const profile = connected && user != null && (
         <div className="profile">
             <FaUserAlt  className='profilePicture2'/>
-            <p>{user.displayName}</p>
-            <button onClick={() => setConnected(false)}>Déconnexion</button>
+            {user.displayName}
+            <div className="profileLinks">
+                <Link to="/profile" className="link">Voir profil</Link>
+                <div onClick={() => setConnected(false)} className="link">Déconnexion</div>
+            </div>
         </div>
     )
-
-    /*
-            <div className='title'>
-                Tic-Tac-Toe
-            </div>
-            {buttons}
-            {profile}
-    */
-
-    /*
-            <div className='test2'></div>
-            <div className='test3'></div>
-    */
 
     return (
         <div className="header">
@@ -62,6 +105,8 @@ const Header = () => {
                 Tic-Tac-Toe
             </div>
             {buttons}
+            {burgerMenu}
+            {userBurgerMenu}
             {profile}
         </div>
     )

@@ -19,7 +19,7 @@ const Match = () => {
             if(user){
                 let uId = user.uid;
                 console.log('Match id : ' + matchid);
-                const unsubscribe = uId != null && firebase.db.collection('matches').doc(matchid)
+                const unsubscribe = uId !== null && firebase.db.collection('matches').doc(matchid)
                 .onSnapshot(match => {
                     const matchData = match.data();
                     setMatch(matchData);
@@ -44,7 +44,7 @@ const Match = () => {
     }
 
     const getTeam = (mData, playerId) => {
-        return mData.playerX_id == playerId ? 'X' : 'O'
+        return mData.playerX_id === playerId ? 'X' : 'O'
     }
 
     const isPlayerTurn = (playerId) => {
@@ -65,14 +65,14 @@ const Match = () => {
 
     const testVictory = (grid) => {
         let victory = false;
-        victory = victory || (grid[0][0] != '' && grid[0][0] == grid[0][1] && grid[0][1] == grid[0][2]);
-        victory = victory || (grid[1][0] != '' && grid[1][0] == grid[1][1] && grid[1][1] == grid[1][2]);
-        victory = victory || (grid[2][0] != '' && grid[2][0] == grid[2][1] && grid[2][1] == grid[2][2]);
-        victory = victory || (grid[0][0] != '' && grid[0][0] == grid[1][0] && grid[1][0] == grid[2][0]);
-        victory = victory || (grid[0][1] != '' && grid[0][1] == grid[1][1] && grid[1][1] == grid[2][1]);
-        victory = victory || (grid[0][2] != '' && grid[0][2] == grid[1][2] && grid[1][2] == grid[2][2]);
-        victory = victory || (grid[0][0] != '' && grid[0][0] == grid[1][1] && grid[1][1] == grid[2][2]);
-        victory = victory || (grid[0][2] != '' && grid[0][2] == grid[1][1] && grid[1][1] == grid[2][0]);
+        victory = victory || (grid[0][0] !== '' && grid[0][0] === grid[0][1] && grid[0][1] === grid[0][2]);
+        victory = victory || (grid[1][0] !== '' && grid[1][0] === grid[1][1] && grid[1][1] === grid[1][2]);
+        victory = victory || (grid[2][0] !== '' && grid[2][0] === grid[2][1] && grid[2][1] === grid[2][2]);
+        victory = victory || (grid[0][0] !== '' && grid[0][0] === grid[1][0] && grid[1][0] === grid[2][0]);
+        victory = victory || (grid[0][1] !== '' && grid[0][1] === grid[1][1] && grid[1][1] === grid[2][1]);
+        victory = victory || (grid[0][2] !== '' && grid[0][2] === grid[1][2] && grid[1][2] === grid[2][2]);
+        victory = victory || (grid[0][0] !== '' && grid[0][0] === grid[1][1] && grid[1][1] === grid[2][2]);
+        victory = victory || (grid[0][2] !== '' && grid[0][2] === grid[1][1] && grid[1][1] === grid[2][0]);
         return victory;
     }
 
@@ -102,7 +102,7 @@ const Match = () => {
         console.log("Match terminé !");
         if(vsComputer){
             const formatedDate = moment(Date.now()).format('DD MMM hh:mm a');
-            const winner = match.currentPlayer == '0' ? '0' : getUserId();
+            const winner = match.currentPlayer === '0' ? '0' : getUserId();
             //console.log(match.currentPlayer);
             firebase.db.collection('matches').doc(matchid)
             .update(
@@ -139,14 +139,14 @@ const Match = () => {
     }
 
     const isMatchOver = () => {
-        return match.winner != '';
+        return match.winner !== '';
     }
 
     const findCase = (myGrid) => {
         let myArray = []
         myGrid.forEach((row, rI) => {
             row.forEach((myCase, cI) => {
-                if(myCase == ''){
+                if(myCase === ''){
                     myArray =  [rI, cI];
                 }
             })
@@ -180,7 +180,7 @@ const Match = () => {
             testVictory(newGrid) ?
                 endMatch(matchid)
             :
-                match.currentPlayer != '0' ? computerPlay(grid) : null
+                match.currentPlayer !== '0' ? computerPlay(grid) : null
         )
         
 
@@ -213,7 +213,7 @@ const Match = () => {
     )
     */
 
-    const displayMatch = match != null && (
+    const displayMatch = match !== null && (
         <div className='matchDisplay'>
             <h2>{match.playerX_username} VS {match.playerO_username} : </h2>
             <div className='gridBox'>
@@ -230,7 +230,7 @@ const Match = () => {
         </div>
     )
 
-    const playerTurn = team != '' && match.winner == '' && (
+    const playerTurn = team !== '' && match.winner === '' && (
         <div className='turnMessage'>
             {
                 match.currentPlayer === getUserId() ? 
@@ -250,11 +250,11 @@ const Match = () => {
         )
     }
 
-    const matchOverMsg = match != null && match.winner != '' && (
+    const matchOverMsg = match !== null && match.winner !== '' && (
         <div className="matchOverMsg">
             <h2>Match terminé !</h2>
             {
-                match.winner == match.playerX_id ?
+                match.winner === match.playerX_id ?
                 <h3>Vainqueur : {match.playerX_username}</h3>
                 :
                 <h3>Vainqueur : {match.playerO_username}</h3>

@@ -26,7 +26,7 @@ const Login = (props) => {
         .then(user => {
             setEmail('');
             setPassword('');
-            props.history.push('/profile');
+            props.history.push('/homepage');
 
             let formatedDate = moment(Date.now()).format('DD MMM hh:mm a');
             firebase.db.collection('users').doc(user.user.uid).update(

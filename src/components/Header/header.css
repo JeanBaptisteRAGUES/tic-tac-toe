@@ -3,7 +3,7 @@
     height: 150px;
     position: sticky;
     top: 0;
-    width: 100%;
+    min-width: 100vh;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -17,7 +17,6 @@
     height: 50px;
     grid-column-start: 3;
     grid-row-start: 3;
-    background-color: red;
 }
 
 .button{
@@ -36,14 +35,34 @@
     padding: 2px;
 }
 
-h1{
-    font-size: 64px;
-    color: white;
-    background-color: green;
+.burgerMenu{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-column-start: 3;
+    grid-row-start: 1;
+}
+
+.hide{
+    display: none;
+}
+
+.profileLinks{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.link{
+    text-decoration: underline;
+    color: black;
+    cursor: pointer;
 }
 
 .title{
-    background-color: green;
     height: 150px;
     font-size: 64px;
     display: flex;
@@ -53,6 +72,7 @@ h1{
     grid-row-start: 1;
     grid-row-end: span 2;
     min-width: 400px;
+    color: white;
 }
 
 .profile{
@@ -63,29 +83,30 @@ h1{
     grid-column-start: 3;
     grid-row-start: 1;
     grid-row-end: span 2;
+    height: 150px;
+    font-size: 16px;
 }
 
 .profilePicture2{
-    border: 1px black dashed;
-    background-color: red;
-    height: 500px;
+    border-radius: 3px;
+    height: 75px;
     width: 75px;
+    background-color: white;
 }
 
-@media all and (max-width: 1024px){
+@media all and (max-width: 1050px){
     .header{
         background-color: cornflowerblue;
         height: 75px;
         position: sticky;
         top: 0;
-        width: 100%;
+        min-width: 100vh;
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
     }
 
     .title{
-        background-color: green;
         height: 75px;
         font-size: 32px;
         display: flex;
@@ -95,10 +116,11 @@ h1{
         grid-row-start: 1;
         grid-row-end: span 2;
         min-width: 200px;
+        color: white;
     }
 
     .buttons{
-        display: flex;
+        display: none;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
@@ -106,7 +128,6 @@ h1{
         grid-column-start: 3;
         grid-row-start: 1;
         grid-row-end: span 2;
-        background-color: red;
     }
 
     .button{
@@ -124,5 +145,43 @@ h1{
         justify-content: center;
         align-items: center;
         padding: 1px;
+    }
+
+    .burgerMenu{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        grid-column-start: 3;
+        grid-row-start: 2;
+    }
+
+    .burgerIcon{
+        height: 40px;
+        width: 40px;
+    }
+
+    .linksFrame{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 50px;
+        width: 100px;
+        background-color: white;
+        border: 1px solid black;
+    }
+
+    .noDecoration{
+        text-decoration: none;
+        color: black;
+    }
+
+    .hide{
+        display: none;
+    }
+
+    .profile{
+        display: none;
     }
 }

@@ -39,7 +39,7 @@ const Signup = (props) => {
         })
         .then(() => {
             setLoginData({...data});
-            props.history.push('/profile');
+            props.history.push('/homepage');
             firebase.auth.currentUser.updateProfile({
                 displayName: username
             })
