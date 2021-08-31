@@ -1,0 +1,38 @@
+.loginMain{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 100vh;
+}
+
+.loginBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:cornflowerblue;
+    color: white;
+    margin-top: 100px;
+    height: 240px;
+    width: 300px;
+    border-radius: 3px;
+}
+
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginBtn{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.link{
+    margin-left: 10px;
+    color: whitesmoke;
+}

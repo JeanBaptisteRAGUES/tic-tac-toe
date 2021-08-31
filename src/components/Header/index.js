@@ -28,7 +28,6 @@ const Header = (props) => {
     useEffect(() => {
         history.listen((location) => {
             setPath(location.pathname);
-
             console.log(`You changed the page to : ${location.pathname}`);
         })
     }, [history])

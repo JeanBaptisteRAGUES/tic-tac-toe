@@ -1,7 +1,8 @@
 import moment from 'moment';
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
-import {FirebaseContext} from '../Firebase'
+import {FirebaseContext} from '../Firebase';
+import './signup.css';
 
 const Signup = (props) => {
     const firebase = useContext(FirebaseContext);
@@ -73,45 +74,68 @@ const Signup = (props) => {
     const {username, email, password, confirmPassword} = loginData;
 
     const btn = username === '' || email === '' || password === '' || password !== confirmPassword
-    ? <button disabled>Inscription</button> : <button>Inscription</button>
+    ? <button disabled className="signupBtn">Inscription</button> : <button className="signupBtn">Inscription</button>
 
     //gestion erreurs
     const errorMsg = error !== '' && <span>{error.message}</span>;
 
     return (
-        <div className="signUpLoginBox">
-            <div className="slContainer">
-                <div className="formBoxLeftSignup">
-
-                </div>
-                <div className="formBoxRight">
-                    <div className="formContent">
-                        {errorMsg}
-                        <h2>Inscription</h2>
-                        <form onSubmit={handleSubmit}>
-                            <div className="inputBox">
-                                <input onChange={handleChange} value={username} type="text" id="username" autoComplete="off" required />
-                                <label htmlFor="username">Pseudo</label>
-                            </div>
-                            <div className="inputBox">
-                                <input onChange={handleChange} value={email} type="email" id="email" autoComplete="off" required />
-                                <label htmlFor="email">Email</label>
-                            </div>
-                            <div className="inputBox">
-                                <input onChange={handleChange} value={password} type="password" id="password" autoComplete="off" required />
-                                <label htmlFor="password">Mot de passe</label>
-                            </div>
-                            <div className="inputBox">
-                                <input onChange={handleChange} value={confirmPassword} type="password" id="confirmPassword" autoComplete="off" required />
-                                <label htmlFor="confirmPassword">Confirmer le mot de passe</label>
-                            </div>
-                            {btn}
-                        </form>
-                        <div className="linkContainer">
-                            <Link className="simpleLink" to="/login">Déjà inscrit ? Connectez vous</Link>
-                        </div>
+        <div className="signupMain">
+            <div className="signupBox">
+                {errorMsg}
+                <h2>Inscription</h2>
+                <form onSubmit={handleSubmit} className="signupForm">
+                    <div className="inputBox">
+                        <label htmlFor="username">Pseudo :</label><br/>
+                        <input 
+                            onChange={handleChange} 
+                            value={username} 
+                            type="text" 
+                            id="username" 
+                            autoComplete="off" 
+                            required
+                            placeholder="toto31" 
+                        />
                     </div>
-                </div>
+                    <div className="inputBox">
+                        <label htmlFor="email">Email :</label><br/>
+                        <input 
+                            onChange={handleChange} 
+                            value={email} 
+                            type="email" 
+                            id="email" 
+                            autoComplete="off" 
+                            required 
+                            placeholder="toto@exemple.com"
+                        />
+                    </div>
+                    <div className="inputBox">
+                        <label htmlFor="password">Mot de passe :</label><br/>
+                        <input 
+                            onChange={handleChange} 
+                            value={password} 
+                            type="password" 
+                            id="password" 
+                            autoComplete="off" 
+                            required 
+                            placeholder="6 lettres/chiffres minimum"
+                        />
+                    </div>
+                    <div className="inputBox">
+                        <label htmlFor="confirmPassword">Confirmez le mot de passe :</label><br/>
+                        <input 
+                            onChange={handleChange} 
+                            value={confirmPassword} 
+                            type="password" 
+                            id="confirmPassword" 
+                            autoComplete="off" 
+                            required 
+                            placeholder="Confirmation mot de passe"
+                        />
+                    </div>
+                    {btn}
+                </form>
+                <Link className="link" to="/login">Déjà inscrit ? Connectez vous</Link>
             </div>
         </div>
     );

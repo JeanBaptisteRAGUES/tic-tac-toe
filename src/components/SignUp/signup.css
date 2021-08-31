@@ -1,0 +1,38 @@
+.signupMain{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 100vh;
+}
+
+.signupBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:cornflowerblue;
+    color: white;
+    margin-top: 100px;
+    height: 300px;
+    width: 300px;
+    border-radius: 3px;
+}
+
+.signupForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+}
+
+.signupBtn{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.link{
+    margin-left: 10px;
+    color: whitesmoke;
+}
