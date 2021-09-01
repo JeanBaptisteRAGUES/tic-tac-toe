@@ -1,4 +1,30 @@
+@font-face {
+    font-family: "Chalk Font";
+    src: url('../../fonts/a_song_for_jennifer/a\ song\ for\ jennifer.ttf');
+}
+
+@font-face {
+    font-family: "Chalk Font";
+    font-weight: bold;
+    src: url('../../fonts/a_song_for_jennifer/A\ Song\ For\ Jennifer\ BOLD.ttf');
+}
+
+@font-face {
+    font-family: "Chalk Font";
+    font-style: italic;
+    src: url('../../fonts/a_song_for_jennifer/A\ Song\ For\ Jennifer\ Italic.ttf');
+}
+
+@font-face {
+    font-family: "Chalk Font";
+    font-weight: bold;
+    font-style: italic;
+    src: url('../../fonts/a_song_for_jennifer/A\ Song\ For\ Jennifer\ BOLD\ Italic.ttf');
+}
+
 .loginMain{
+    background: url('../../images/tictactoeBackground.jpg') no-repeat center center fixed;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -12,12 +38,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color:cornflowerblue;
+    background-color:steelblue;
     color: white;
     margin-top: 100px;
     height: 240px;
     width: 300px;
     border-radius: 3px;
+}
+
+.title2{
+    font-family: "Chalk Font", Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-size: 48px;
+    margin-bottom: 10px;
 }
 
 .loginForm{

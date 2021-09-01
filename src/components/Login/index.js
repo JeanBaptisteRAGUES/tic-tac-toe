@@ -47,7 +47,7 @@ const Login = (props) => {
         <div className="loginMain">
             <div className="loginBox">
                 {error !== '' && <span>{error.message}</span>}
-                <h2>Connexion</h2>
+                <div className="title2">Connexion</div>
                 <form onSubmit={handleSubmit} className="loginForm">
                     <div className="inputBox">
                         <label htmlFor="email">Email :</label><br/>

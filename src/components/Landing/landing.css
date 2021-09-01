@@ -1,0 +1,27 @@
+.landingContainer{
+    background: url('../../images/tictactoeBackground.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    min-width: 100vh;
+    min-height: 100vh;
+}
+
+@media all and (max-width: 1050px){
+    .landingContainer{
+        background: url('../../images/tictactoeBackground.jpg') no-repeat center center;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 16px;
+        min-width: 100vh;
+        min-height: 100vh;
+    }
+}

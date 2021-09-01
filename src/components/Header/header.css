@@ -1,5 +1,29 @@
+@font-face {
+    font-family: "Chalk Font";
+    src: url('../../fonts/a_song_for_jennifer/a\ song\ for\ jennifer.ttf');
+}
+
+@font-face {
+    font-family: "Chalk Font";
+    font-weight: bold;
+    src: url('../../fonts/a_song_for_jennifer/A\ Song\ For\ Jennifer\ BOLD.ttf');
+}
+
+@font-face {
+    font-family: "Chalk Font";
+    font-style: italic;
+    src: url('../../fonts/a_song_for_jennifer/A\ Song\ For\ Jennifer\ Italic.ttf');
+}
+
+@font-face {
+    font-family: "Chalk Font";
+    font-weight: bold;
+    font-style: italic;
+    src: url('../../fonts/a_song_for_jennifer/A\ Song\ For\ Jennifer\ BOLD\ Italic.ttf');
+}
+
 .header{
-    background-color: cornflowerblue;
+    background-color: steelblue;
     height: 150px;
     position: sticky;
     top: 0;
@@ -64,7 +88,7 @@
 
 .title{
     height: 150px;
-    font-size: 64px;
+    font-size: 128px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,6 +97,8 @@
     grid-row-end: span 2;
     min-width: 400px;
     color: white;
+    font-family: "Chalk Font", Arial, Helvetica, sans-serif;
+    font-style: italic;
 }
 
 .profile{
@@ -96,7 +122,7 @@
 
 @media all and (max-width: 1050px){
     .header{
-        background-color: cornflowerblue;
+        background-color: steelblue;
         height: 75px;
         position: sticky;
         top: 0;
@@ -108,7 +134,7 @@
 
     .title{
         height: 75px;
-        font-size: 32px;
+        font-size: 64px;
         display: flex;
         justify-content: center;
         align-items: center;

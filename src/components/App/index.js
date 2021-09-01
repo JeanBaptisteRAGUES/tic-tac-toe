@@ -12,6 +12,7 @@ import MatchesList from '../MatchesList';
 import Match from '../Match';
 import HomePage from '../HomePage';
 import Header from '../Header';
+import Footer from '../Footer';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/homepage" component={HomePage} />
           <Route component={ErrorPage} />
       </Switch>
+      <Footer/>
     </Router>
   );
 }

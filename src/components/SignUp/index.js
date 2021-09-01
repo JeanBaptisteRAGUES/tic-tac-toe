@@ -83,7 +83,7 @@ const Signup = (props) => {
         <div className="signupMain">
             <div className="signupBox">
                 {errorMsg}
-                <h2>Inscription</h2>
+                <div className="title2">Inscription</div>
                 <form onSubmit={handleSubmit} className="signupForm">
                     <div className="inputBox">
                         <label htmlFor="username">Pseudo :</label><br/>
