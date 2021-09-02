@@ -1,7 +1,33 @@
+@font-face {
+    font-family: "Chalk Font";
+    src: url('../../fonts/a_song_for_jennifer/a\ song\ for\ jennifer.ttf');
+}
+
+@font-face {
+    font-family: "Chalk Font";
+    font-weight: bold;
+    src: url('../../fonts/a_song_for_jennifer/A\ Song\ For\ Jennifer\ BOLD.ttf');
+}
+
+@font-face {
+    font-family: "Chalk Font";
+    font-style: italic;
+    src: url('../../fonts/a_song_for_jennifer/A\ Song\ For\ Jennifer\ Italic.ttf');
+}
+
+@font-face {
+    font-family: "Chalk Font";
+    font-weight: bold;
+    font-style: italic;
+    src: url('../../fonts/a_song_for_jennifer/A\ Song\ For\ Jennifer\ BOLD\ Italic.ttf');
+}
+
 .matchContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-width: 100vh;
+    min-height: 100vh;
 }
 
 .matchDisplay{
@@ -19,19 +45,23 @@
     align-items: center;
     justify-content: center;
     align-content: center;
-    background-color: royalblue;
+    background-image: url('../../images/tictactoe_grid.jpg');
+    background-size: 320px;
+    border-radius: 5px;
 }
 
 .gridCase{
     height: 100px;
     width: 100px;
-    border: 1px black solid;
     font-size: 80px;
-    font-weight: bold;
-    background-color: lightcyan;
+    background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: "Chalk Font";
+    font-style: italic;
+    color: whitesmoke;
+    font-size: 112px;
 }
 
 .matchOverMsg{

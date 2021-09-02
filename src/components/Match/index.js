@@ -98,12 +98,16 @@ const Match = () => {
         });
     }
 
-    const endMatch = () => {
+    const endMatch = (matchId, draw) => {
         console.log("Match terminé !");
         if(vsComputer){
             const formatedDate = moment(Date.now()).format('DD MMM hh:mm a');
-            const winner = match.currentPlayer === '0' ? '0' : getUserId();
-            //console.log(match.currentPlayer);
+            const winner = draw ? 
+                '-1' 
+            : 
+                match.currentPlayer === '0' ? '0' : getUserId();
+            
+            console.log("Winner : " + winner);
             firebase.db.collection('matches').doc(matchid)
             .update(
                 {
@@ -155,6 +159,21 @@ const Match = () => {
         return myArray;
     }
 
+    const gridFull =(myGrid) => {
+        let full = true;
+
+        myGrid.forEach((row, rI) => {
+            row.forEach((myCase, cI) => {
+                if(myCase === ''){
+                    full = full &&  myGrid[rI][cI] !== '';
+                }
+            })
+        })
+        if(full) console.log('full !');
+
+        return full;
+    }
+
     const computerPlay = (myGrid) => {
         console.log('Computer plays !');
         setComputerCanPlay(false);
@@ -177,10 +196,13 @@ const Match = () => {
             }
         )
         .then(
-            testVictory(newGrid) ?
-                endMatch(matchid)
+            gridFull(newGrid) ?
+                endMatch(matchid, true)
             :
-                match.currentPlayer !== '0' ? computerPlay(grid) : null
+                testVictory(newGrid) ?
+                    endMatch(matchid, false)
+                :
+                    match.currentPlayer !== '0' ? computerPlay(grid) : null
         )
         
 
@@ -254,10 +276,13 @@ const Match = () => {
         <div className="matchOverMsg">
             <h2>Match terminé !</h2>
             {
-                match.winner === match.playerX_id ?
-                <h3>Vainqueur : {match.playerX_username}</h3>
+                match.winner === '-1' ?
+                    <h3>Egalité !</h3>
                 :
-                <h3>Vainqueur : {match.playerO_username}</h3>
+                    match.winner === match.playerX_id ?
+                    <h3>Vainqueur : {match.playerX_username}</h3>
+                    :
+                    <h3>Vainqueur : {match.playerO_username}</h3>
             }
             {
                 vsComputer ?

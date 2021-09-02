@@ -33,6 +33,17 @@
     grid-template-rows: 1fr 1fr 1fr;
 }
 
+.header_alternative{
+    background-color: rgb(30, 30, 60);
+    height: 150px;
+    position: sticky;
+    top: 0;
+    min-width: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
 .buttons{
     display: flex;
     flex-wrap: wrap;
@@ -44,20 +55,20 @@
 }
 
 .button{
-    border-radius: 5px;
     height: 25px;
     margin-left: 20px;
     margin-right: 20px;
-    background-color: white;
-    border: solid 1px black;
-    font-size: 18px;
+    font-size: 26px;
     text-decoration: none;
-    color: black;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2px;
+    font-family: "Chalk Font", Arial, Helvetica, sans-serif;
+    font-style: italic;
 }
+
 
 .burgerMenu{
     display: none;
