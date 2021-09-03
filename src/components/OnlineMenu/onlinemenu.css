@@ -1,4 +1,4 @@
-.homeContainer{
+.onlineMenuContainer{
     background: url('../../images/tictactoeBackground.jpg') no-repeat center center fixed;
     background-size: cover;
     display: flex;
@@ -23,7 +23,7 @@
     color: white;
 }
 
-.link{
+.playersLink{
     text-decoration: none;
     color: white;
 }
@@ -31,18 +31,4 @@
 .icone{
     height: 75px;
     width: 75px;
-}
-
-.noChallengesMessage{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 32px;
-    height: 30px;
-    width: 600px;
-    margin: 20px;
-    background-color: steelblue;
-    padding: 5px;
-    border-radius: 5px;
 }

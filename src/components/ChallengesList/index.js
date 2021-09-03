@@ -1,6 +1,7 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { FirebaseContext } from '../Firebase';
 import moment from 'moment';
+import './challengeslist.css';
 
 const ChallengesList = () => {
 
@@ -105,9 +106,16 @@ const ChallengesList = () => {
         </div>
     )
 
+    const noChallengesMessage = challenges.length == 0 && (
+        <div className="noChallengesMessage">
+            Aucun joueur ne vous a défié pour le moment.
+        </div>
+    )
+
     return (
-        <div>
-            ChallengesList :<br/>
+        <div className="challengesContainer">
+            <div className="titleList">Demandes de défis :</div>
+            {noChallengesMessage}
             {displayChallenges}
         </div>
     )

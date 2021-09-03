@@ -2,6 +2,7 @@ import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { FirebaseContext } from '../Firebase';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import './matcheslist.css';
 
 const MatchesList = () => {
 
@@ -45,21 +46,21 @@ const MatchesList = () => {
                         Match commencé le : {match.data().date}<br/>
                         Joueur O : {match.data().playerO_username}<br/>
                         Joueur X : {match.data().playerX_username}<br/>
-                        Joueur actif : {match.data().currentPlayer ==  getUserId() ? 'A votre tour de jouer' : `Au tour de l'adversaire de jouer`}<br/>
-                        {match.data().turn == 0 ?
-                            <Link to={`/match/${match.id}`}>Commencer</Link>
-                            :
-                            <Link to={`/match/${match.id}`}>Continuer</Link>
-                        } 
+                        Joueur actif : {match.data().currentPlayer ==  getUserId() ? 'A votre tour de jouer' : `Au tour de l'adversaire de jouer`}
                     </p>
+                    {match.data().turn == 0 ?
+                        <Link to={`/match/${match.id}`} className="linkBtn">Commencer</Link>
+                        :
+                        <Link to={`/match/${match.id}`} className="linkBtn">Continuer</Link>
+                    } 
                 </div>
             ))}
         </div>
     )
 
     return (
-        <div>
-            Matches List :<br/>
+        <div className="matchesListContainer">
+            <div className="titleList">Matchs en cours :</div>
             {displayMatches}
         </div>
     )

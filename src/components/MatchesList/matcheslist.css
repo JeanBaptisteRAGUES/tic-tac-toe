@@ -1,48 +1,45 @@
-.homeContainer{
+.matchesListContainer{
     background: url('../../images/tictactoeBackground.jpg') no-repeat center center fixed;
     background-size: cover;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     min-height: 100vh;
     min-width: 100vh;
+    padding-top: 20px;
 }
 
-.choiceContainer{
+.titleList{
+    font-family: "Chalk Font", Arial, Helvetica, sans-serif;
+    color: white;
+    font-style: italic;
+    font-size: 64px;
+}
+
+.matchesDisplay{
     display: flex;
     flex-direction: column;
-    height: 150px;
-    width: 250px;
-    background-color: steelblue;
-    margin: 20px;
-    border: solid black 1px;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
-    color: white;
+    margin-top: 20px;
 }
 
-.link{
-    text-decoration: none;
-    color: white;
-}
-
-.icone{
-    height: 75px;
-    width: 75px;
-}
-
-.noChallengesMessage{
+.matchBox{
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    color: white;
-    font-size: 32px;
-    height: 30px;
-    width: 600px;
-    margin: 20px;
+    align-items: center;
     background-color: steelblue;
+    color: white;
+    width: 350px;
+    height: 220px;
     padding: 5px;
     border-radius: 5px;
+}
+
+.linkBtn{
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
 }

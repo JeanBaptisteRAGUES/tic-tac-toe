@@ -57,9 +57,7 @@ const Profile = (props) => {
                 -Parties jouées : {userData.playedMatches}<br/>
                 -Parties gagnées : {userData.wonMatches}<br/>
                 <br/><br/>
-                <Link to='/playerslist2'>Trouver d'autres joueurs</Link><br/>
-                <Link to='/challengeslist'>Afficher les demandes de défis</Link><br/>
-                <Link to='/matcheslist'>Commencer ou continuer une partie</Link><br/>
+                <Link to='/homepage'>Jouer</Link><br/>
                 <button onClick={() => disconnect()}>Déconnexion</button>
             </div>
         </div>

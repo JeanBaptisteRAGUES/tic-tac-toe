@@ -93,8 +93,8 @@ const PlayersList2 = () => {
     )
 
     return (
-        <div>
-            PlayersList :<br/>
+        <div className="playersListContainer">
+            <div className="titleList">Liste des joueurs :</div>
             {displayPlayers}
         </div>
     )

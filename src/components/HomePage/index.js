@@ -30,14 +30,16 @@ const HomePage = () => {
     }, [])
 
     const displayOnline = (
-        <div className="choiceContainer">
-            <FaUsers className='icone'/>
-            <p>Jouez contre d'autres joueurs en ligne</p>
-        </div>
+        <Link to='/online-menu' className="link">
+            <div className="choiceContainer">
+                <FaUsers className='icone'/>
+                <p>Jouez contre d'autres joueurs en ligne</p>
+            </div>
+        </Link>
     )
 
     const displayComputer = matchId != '' && matchId != null && (
-        <Link to={`/match/${matchId}`}>
+        <Link to={`/match/${matchId}`} className="link">
             <div className="choiceContainer">
                 <FaRobot className='icone'/>
                 <p>Jouez contre l'ordinateur</p>

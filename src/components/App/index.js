@@ -13,6 +13,7 @@ import Match from '../Match';
 import HomePage from '../HomePage';
 import Header from '../Header';
 import Footer from '../Footer';
+import OnlineMenu from '../OnlineMenu';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/matcheslist" component={MatchesList} />
           <Route path="/match/:matchid" component={Match} />
           <Route path="/homepage" component={HomePage} />
+          <Route path="/online-menu" component={OnlineMenu} />
           <Route component={ErrorPage} />
       </Switch>
       <Footer/>

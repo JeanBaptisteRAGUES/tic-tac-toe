@@ -1,3 +1,39 @@
+@font-face {
+    font-family: "Chalk Font";
+    src: url('../../fonts/a_song_for_jennifer/a\ song\ for\ jennifer.ttf');
+}
+
+@font-face {
+    font-family: "Chalk Font";
+    font-weight: bold;
+    src: url('../../fonts/a_song_for_jennifer/A\ Song\ For\ Jennifer\ BOLD.ttf');
+}
+
+@font-face {
+    font-family: "Chalk Font";
+    font-style: italic;
+    src: url('../../fonts/a_song_for_jennifer/A\ Song\ For\ Jennifer\ Italic.ttf');
+}
+
+@font-face {
+    font-family: "Chalk Font";
+    font-weight: bold;
+    font-style: italic;
+    src: url('../../fonts/a_song_for_jennifer/A\ Song\ For\ Jennifer\ BOLD\ Italic.ttf');
+}
+
+.playersListContainer{
+    background: url('../../images/tictactoeBackground.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 100vh;
+    padding-top: 50px;
+}
+
 .profilesDisplay{
     display: flex;
     flex-wrap: wrap;
@@ -11,10 +47,11 @@
     flex-direction: column;
     align-items: center;
     border: 2px black solid;
-    background-color: lightskyblue;
+    background-color: steelblue;
     padding: 5px;
     margin-top: 20px;
     margin-left: 20px;
+    border-radius: 3px;
 }
 
 .profilePicture{
@@ -23,4 +60,11 @@
     height: 50px;
     width: 50px;
     padding: 5px;
+}
+
+.titleList{
+    font-family: "Chalk Font", Arial, Helvetica, sans-serif;
+    color: white;
+    font-style: italic;
+    font-size: 64px;
 }
