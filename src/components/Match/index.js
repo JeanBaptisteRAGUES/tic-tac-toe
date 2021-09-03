@@ -147,11 +147,28 @@ const Match = () => {
     }
 
     const findCase = (myGrid) => {
-        let myArray = []
+        let myArray = [];
+        let testGrid = myGrid.slice(0);
+        let maxPoints = 0;
+
         myGrid.forEach((row, rI) => {
             row.forEach((myCase, cI) => {
                 if(myCase === ''){
-                    myArray =  [rI, cI];
+                    if(maxPoints == 0){
+                        myArray = [rI, cI];
+                        maxPoints = 1;
+                    }
+                    testGrid[rI][cI] = 'O';
+                    if(testVictory(testGrid)){
+                        myArray = [rI, cI];
+                        maxPoints = 3;
+                    }
+                    testGrid[rI][cI] = 'X';
+                    if(maxPoints < 3 && testVictory(testGrid)){
+                        myArray = [rI, cI];
+                        maxPoints = 2;
+                    }
+                    testGrid[rI][cI] = '';
                 }
             })
         })
