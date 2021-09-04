@@ -254,7 +254,7 @@ const Match = () => {
 
     const displayMatch = match !== null && (
         <div className='matchDisplay'>
-            <h2>{match.playerX_username} VS {match.playerO_username} : </h2>
+            <div className="matchUsernames">{match.playerX_username} VS {match.playerO_username} : </div>
             <div className='gridBox'>
             {
                 grid.map((row, rowIndex) => (

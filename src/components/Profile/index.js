@@ -1,6 +1,7 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FirebaseContext } from '../Firebase';
+import './profile.css';
 
 const Profile = (props) => {
     const firebase = useContext(FirebaseContext);
@@ -48,8 +49,8 @@ const Profile = (props) => {
     return userSession === null ? (
         <p>Authentification..</p>
     ) : (
-        <div className="quiz-bg">
-            <div className="container">
+        <div className="profileContainer">
+            <div className="userBox">
                 {userData.username}<br/>
                 {userData.email}<br/>
                 <br/><br/>
@@ -57,8 +58,8 @@ const Profile = (props) => {
                 -Parties jouées : {userData.playedMatches}<br/>
                 -Parties gagnées : {userData.wonMatches}<br/>
                 <br/><br/>
-                <Link to='/homepage'>Jouer</Link><br/>
-                <button onClick={() => disconnect()}>Déconnexion</button>
+                <Link to='/homepage' className="linkBtn">Jouer</Link><br/>
+                <div onClick={() => disconnect()} className="linkBtn">Déconnexion</div>
             </div>
         </div>
     );
