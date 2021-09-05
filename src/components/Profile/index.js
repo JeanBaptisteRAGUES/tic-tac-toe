@@ -13,6 +13,7 @@ const Profile = (props) => {
         if(disconnected){
             console.log("Déconnexion");
             firebase.signoutUser();
+            props.history.push('/');
         }
     }, [disconnected, firebase])
 
@@ -51,13 +52,14 @@ const Profile = (props) => {
     ) : (
         <div className="profileContainer">
             <div className="userBox">
-                {userData.username}<br/>
-                {userData.email}<br/>
-                <br/><br/>
+                <div>{userData.username}</div>
+                <div>{userData.email}</div>
+                <br/>
                 Stats :<br/> 
                 -Parties jouées : {userData.playedMatches}<br/>
                 -Parties gagnées : {userData.wonMatches}<br/>
                 <br/><br/>
+                <Link to='/history' className="linkBtn">Historique</Link><br/>
                 <Link to='/homepage' className="linkBtn">Jouer</Link><br/>
                 <div onClick={() => disconnect()} className="linkBtn">Déconnexion</div>
             </div>

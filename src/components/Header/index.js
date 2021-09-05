@@ -3,7 +3,7 @@ import { FirebaseContext } from '../Firebase';
 import {FaUserAlt} from 'react-icons/fa';
 import {FiMenu} from 'react-icons/fi';
 import './header.css';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Header = (props) => {
     const [connected, setConnected] = useState(false);
@@ -36,6 +36,7 @@ const Header = (props) => {
         if(!connected){
             console.log("Déconnexion");
             firebase.signoutUser();
+            history.push('/');
         }
     }, [connected, firebase])
 

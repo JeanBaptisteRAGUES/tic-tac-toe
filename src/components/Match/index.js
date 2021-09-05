@@ -219,7 +219,7 @@ const Match = () => {
                 testVictory(newGrid) ?
                     endMatch(matchid, false)
                 :
-                    match.currentPlayer !== '0' ? computerPlay(grid) : null
+                    vsComputer && match.currentPlayer !== '0' ? computerPlay(grid) : null
         )
         
 

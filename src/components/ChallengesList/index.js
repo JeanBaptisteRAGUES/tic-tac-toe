@@ -98,8 +98,8 @@ const ChallengesList = () => {
                         {challenge.data().challengerUsername} veut jouer contre vous !
                     </p>
                     <div className='acceptDeclineBtnBox'>
-                        <button onClick={() => acceptOrDecline(challenge.id, challenge.data().challengerId, challenge.data().challengerUsername, 'accepted')}>Accepter</button>
-                        <button onClick={() => acceptOrDecline(challenge.id, challenge.data().challengerId, challenge.data().challengerUsername, 'declined')}>Refuser</button>
+                        <div onClick={() => acceptOrDecline(challenge.id, challenge.data().challengerId, challenge.data().challengerUsername, 'accepted')} className="acceptDeclineBtn">Accepter</div>
+                        <div onClick={() => acceptOrDecline(challenge.id, challenge.data().challengerId, challenge.data().challengerUsername, 'declined')} className="acceptDeclineBtn">Refuser</div>
                     </div>
                 </div>
             ))}
