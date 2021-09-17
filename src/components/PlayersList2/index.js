@@ -3,25 +3,16 @@ import { FirebaseContext } from '../Firebase';
 import {FaUserAlt} from 'react-icons/fa';
 import './playerList2.css';
 import moment from 'moment';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+
+toast.configure();
 
 const PlayersList2 = () => {
 
     //const utilisateursCollection = db.collection("utilisateurs");
     const firebase = useContext(FirebaseContext);
     const [players, setPlayers] = useState([]);
-
-    /*
-    useEffect(() => {
-        const uId = firebase.auth.currentUser.uid;
-        const unsubscribe = uId != null && firebase.db.collection('users').where('id', '!=', uId).onSnapshot(users => {
-            const usersData = users.docs.map(userDoc => userDoc.data())
-            setPlayers(usersData)
-            console.log(uId)
-        });
-
-        return () => unsubscribe();
-    }, [])
-    */
 
     useEffect(() => {
 
@@ -30,6 +21,9 @@ const PlayersList2 = () => {
                 let uId = user.uid;
                 const unsubscribe = uId != null && firebase.db.collection('users').where('id', '!=', uId).onSnapshot(users => {
                     const usersData = users.docs.map(userDoc => userDoc.data())
+                    usersData.forEach(userData => {
+                        userData.challenged = false;
+                    })
                     setPlayers(usersData)
                     console.log(uId)
                 });
@@ -38,6 +32,17 @@ const PlayersList2 = () => {
             }
         });
     }, [])
+
+    const showSuccessMsg = () => {
+        toast.success('Invitation envoyée !', {
+            position: 'top-right',
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false
+        })
+    }
 
     const defier = (challengedId, challengedUsername) => {
         const challengerId = getUserId();
@@ -54,6 +59,7 @@ const PlayersList2 = () => {
         })
         .then(() => {
             console.log(`${challengerUsername} (${challengerId}) défie ${challengedUsername} (${challengedId})`);
+            showSuccessMsg();
         })
         .catch((err) => {
             console.log("Erreur lors de l'envoi du challenge : " + err);
@@ -86,7 +92,12 @@ const PlayersList2 = () => {
                     <FaUserAlt className='profilePicture'/>
                     <p>{player.username}</p>
                     <p>Connected : {player.lastCoDate}</p>
-                    <button onClick={() => defier(player.id, player.username)}>Defier</button>
+                    {
+                        player.challenged ?
+                            <button>Envoyé</button>
+                        :
+                            <button onClick={() => defier(player.id, player.username)}>Defier</button>
+                    }
                 </div>
             ))}
         </div>

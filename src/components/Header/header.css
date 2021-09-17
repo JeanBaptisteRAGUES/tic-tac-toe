@@ -75,8 +75,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    grid-column-start: 3;
+    grid-column-start: 2;
     grid-row-start: 1;
+    color: white;
 }
 
 .hide{
@@ -98,14 +99,13 @@
 }
 
 .title{
-    height: 150px;
+    height: 75px;
     font-size: 128px;
     display: flex;
     justify-content: center;
     align-items: center;
     grid-column-start: 2;
-    grid-row-start: 1;
-    grid-row-end: span 2;
+    grid-row-start: 2;
     min-width: 400px;
     color: white;
     font-family: "Chalk Font", Arial, Helvetica, sans-serif;
@@ -119,8 +119,7 @@
     align-items: center;
     grid-column-start: 3;
     grid-row-start: 1;
-    grid-row-end: span 2;
-    height: 150px;
+    grid-row-end: span 3;
     font-size: 16px;
 }
 
@@ -144,14 +143,14 @@
     }
 
     .title{
-        height: 75px;
+        height: 50px;
         font-size: 64px;
         display: flex;
         justify-content: center;
         align-items: center;
         grid-column-start: 2;
-        grid-row-start: 1;
-        grid-row-end: span 2;
+        grid-row-start: 2;
+        grid-row-end: span 1;
         min-width: 200px;
         color: white;
     }
@@ -191,11 +190,12 @@
         align-items: center;
         grid-column-start: 3;
         grid-row-start: 2;
+        
     }
 
     .burgerIcon{
-        height: 40px;
-        width: 40px;
+        height: 50px;
+        width: 50px;
     }
 
     .linksFrame{
