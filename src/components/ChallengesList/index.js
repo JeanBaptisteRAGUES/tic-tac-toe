@@ -18,7 +18,7 @@ const ChallengesList = () => {
                 .where('challengedId', '==', uId)
                 .where('status', '==', 'sent')
                 .onSnapshot(challenges => {
-                    const challengesData = challenges.docs.map(challengeData => challengeData)
+                    const challengesData = challenges.docs.map(challengeData => challengeData);
                     setChallenges(challengesData)
                     console.log(uId)
                 });
