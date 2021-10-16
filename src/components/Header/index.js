@@ -93,7 +93,7 @@ const Header = (props) => {
             <FaUserAlt  className='profilePicture2'/>
             {user.displayName}
             <div className="profileLinks">
-                <Link to="/profile" className="link">Voir profil</Link>
+                <Link to="/profile" className="link">Profil</Link>
                 <div onClick={() => setConnected(false)} className="link">Déconnexion</div>
             </div>
         </div>

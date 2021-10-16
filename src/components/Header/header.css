@@ -93,8 +93,8 @@
 }
 
 .link{
-    text-decoration: underline;
-    color: black;
+    text-decoration: none;
+    color: white;
     cursor: pointer;
 }
 
@@ -201,12 +201,19 @@
     .linksFrame{
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
         height: 50px;
         width: 100px;
-        background-color: white;
+        background-color: whitesmoke;
         border: 1px solid black;
+    }
+
+    .link{
+        text-decoration: underline;
+        color: black;
+        cursor: pointer;
+        margin: 2px;
     }
 
     .noDecoration{

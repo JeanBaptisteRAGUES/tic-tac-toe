@@ -108,6 +108,7 @@ const Match = () => {
                 match.currentPlayer === '0' ? '0' : getUserId();
             
             console.log("Winner : " + winner);
+            console.log("User : " + firebase.auth.currentUser.uid);
             firebase.db.collection('matches').doc(matchid)
             .update(
                 {
@@ -290,24 +291,37 @@ const Match = () => {
     }
 
     const matchOverMsg = match !== null && match.winner !== '' && (
-        <div className="matchOverMsg">
-            <h2>Match terminé !</h2>
-            {
-                match.winner === '-1' ?
-                    <h3>Egalité !</h3>
-                :
-                    match.winner === match.playerX_id ?
-                    <h3>Vainqueur : {match.playerX_username}</h3>
+        match.winner === '-1' ?
+            <div className="matchBox draw">
+                <h1>Egalité !</h1>
+                {
+                    vsComputer ?
+                    <button onClick={() => restart()}>Recommencer</button>
                     :
-                    <h3>Vainqueur : {match.playerO_username}</h3>
-            }
-            {
-                vsComputer ?
-                <button onClick={() => restart()}>Recommencer</button>
-                :
-                null
-            }
-        </div>
+                    null
+                }
+            </div>
+        :
+            match.winner === firebase.auth.currentUser.uid ?
+            <div className="matchBox win">
+                <h1>Gagné !</h1>
+                {
+                    vsComputer ?
+                    <button onClick={() => restart()}>Recommencer</button>
+                    :
+                    null
+                }
+            </div>
+            :
+            <div className="matchBox lose">
+                <h1>Perdu !</h1>
+                {
+                    vsComputer ?
+                    <button onClick={() => restart()}>Recommencer</button>
+                    :
+                    null
+                }
+            </div>
     )
 
     return (
