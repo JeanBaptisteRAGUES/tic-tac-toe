@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# Tic Tac Toe
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description :
+Jeu du tic tac toe où vous pourrez jouer en direct contre d'autres joueurs inscrits ou contre l'ordinateur. Vous pouvez ensuite afficher l'historique de vos parties.<br/>
+Site fait en React et déployé sur firebase.<br/>
+Base de données utilisant le cloud firestore de firebase.<br/>
 
-## Available Scripts
+## Lien du site :
+https://tic-tac-toe-a7780.web.app/
 
-In the project directory, you can run:
+## Utilisation :
 
-### `npm start`
+### Inscription/Connexion :
+Vous pouvez vous inscrire ou vous connecter en cliquant sur les liens "inscription" ou "connexion" dans la barre de menu, en haut à droite.<br/>
+Pour l'inscription, une adresse mail est demandée, cependant celle-ci peut être fictive, du moment que la syntaxe est correcte (ex : toto@test.com).<br/>
+Deux comptes tests sont aussi directement disponibles pour pouvoir tester l'application et les matchs en ligne : <br/>
+Compte 1 :<br/>
+-Nom d'utilisateur : test01<br/>
+-Mot de passe : 123456<br/>
+Compte 2 :<br/>
+-Nom d'utilisateur : test02<br/>
+-Mot de passe : 123456<br/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Défier un autre joueur :
+Une fois connecté, cliquez sur "Jouez contre d'autres joueurs en ligne", puis sur "Trouver d'autres joueurs".<br/>
+Parmis la liste des joueurs qui s'affiche, choisissez en un et cliquez sur "Défier".<br/>
+Vous n'avez plus qu'à attendre que l'autre joueur accepte votre invitation.<br/>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Accepter le défi d'un autre joueur :
+Une fois connecté, cliquez sur "Jouez contre d'autres joueurs en ligne", puis sur "Afficher les demandes de défis".<br/>
+Si des joueurs vous ont défié, un message s'affichera et vous pourrez accepter ou refuser l'invitation.<br/>
 
-### `npm test`
+## Commencer une partie contre un autre joueur :
+Une fois que votre invitation a été acceptée, ou que vous avez accepté l'invitation, rendez-vous sur votre profil et cliquez sur "Jouer", puis "Jouez contre d'autres joueurs en ligne" et enfin sur "Commencer ou continuer une partie".<br/>
+Le résumé de la partie s'affiche alors dans votre liste de parties actives.<br/>
+Si celle-ci est déjà commencée, le bouton "Continuer" s'affiche, sinon c'est le bouton "Commencer" qui s'affiche.<br/>
+Vous n'avez plus qu'à cliquer sur ce dernier pour jouer.<br/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Commencer une partie contre l'ordinateur :
+Rendez-vous sur votre profil et cliquez sur "Jouer", puis "Jouez contre l'ordinateur".<br/>
 
-### `npm run build`
+## Afficher l'historique de vos parties :
+Rendez-vous sur votre profil et cliquez sur "Historique".<br/>
+Seuls l'historique des matchs contre de vrais joueurs (donc pas l'ordinateur) s'affichera.<br/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technologies utilisées :
+### Front-End :
+-React<br/>
+-React icons<br/>
+-React toastify<br/>
+-Vanilla CSS
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Déploiement, Authentification :
+-Firebase<br/>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Base de données :
+-Cloud Firestore<br/>
